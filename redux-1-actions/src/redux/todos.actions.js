@@ -3,6 +3,18 @@ export const REMOVE_TODO = 'REMOVE_TODO'
 
 // Your job is to write two action creators:
 
-export const addTodo = () => {}
+export const addTodo = (newTodo) => {
+  const action = {
+    type: ADD_TODO,
+    payload: newTodo
+  }
+  return action
+}
 
-export const removeTodo = () => {}
+export const removeTodo = (id) => {
+  const action = {
+    type: REMOVE_TODO,
+    payload: id
+  }
+  return action
+}
