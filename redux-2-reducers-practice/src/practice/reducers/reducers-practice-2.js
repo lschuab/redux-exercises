@@ -13,3 +13,16 @@ let FETCH_GROCERIES = 'FETCH_GROCERIES'
 let REMOVE_GROCERY = 'REMOVE_GROCERY'
 
 // Write your code below this line!
+
+export default (state = [], action) => {
+  switch (action.type) {
+    case ADD_GROCERY:
+      return [...state, action.payload]
+    case FETCH_GROCERIES:
+      return action.payload
+    case REMOVE_GROCERY:
+      return state.filter(grocery => grocery.id !== action.payload)
+    default:
+      return state
+  }
+}
