@@ -18,7 +18,10 @@ class App extends Component {
             value={this.state.newTodo}
           />
           <button
-            onClick={() => this.props.addTodo(this.state.newTodo)}
+            onClick={() => this.props.addTodo({
+              id: 1,
+              title: this.state.newTodo
+            })}
           >Submit</button>
         </p>
         <h3>Todo List:</h3>
