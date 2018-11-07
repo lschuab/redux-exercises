@@ -6,7 +6,10 @@ export const REMOVE_TODO = 'REMOVE_TODO'
 export const addTodo = (newTodo) => {
   const action = {
     type: ADD_TODO,
-    payload: newTodo
+    payload: {
+      id: Math.random(),
+      title: newTodo
+    }
   }
   return action
 }
