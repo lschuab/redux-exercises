@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
 
     case REMOVE_TODO:
       let selectedTodoId = action.payload
-      return state.filter(todo => todo.id === Number(selectedTodoId))
+      return state.filter(todo => todo.id !== Number(selectedTodoId))
   
     default:
       return state

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { addTodo, removeTodo } from './redux/todos.actions'
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
     let listOfTodos = this.props.todos.map(todo => 
       <li key={todo.id}>
         {todo.title}
-        <button>Delete</button>
+        <button onClick={() => this.props.removeTodo(todo.id)}>Delete</button>
       </li>
     )
     return (
@@ -22,7 +23,7 @@ class App extends Component {
             onChange={this.handleChange}
             value={this.state.newTodo}
           />
-          <button>Submit</button>
+          <button onClick={() => this.props.addTodo(this.state.newTodo)}>Submit</button>
         </p>
         <h3>Todo List:</h3>
         <ul>{listOfTodos}</ul>
@@ -35,4 +36,9 @@ const mapStateToProps = state => ({
   todos: state.todos
 })
 
-export default connect(mapStateToProps, null)(App)
+const mapDispatchToProps = dispatch => bindActionCreators({
+  addTodo,
+  removeTodo
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
